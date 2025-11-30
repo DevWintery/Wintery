@@ -8,8 +8,8 @@ import "highlight.js/styles/atom-one-dark.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Wintery Blog",
-    description: "A premium technical blog.",
+    title: "Wintery",
+    description: "Wintery's Development Blog",
 };
 
 export default function RootLayout({
