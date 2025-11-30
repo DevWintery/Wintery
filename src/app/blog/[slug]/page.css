@@ -65,12 +65,43 @@
     background: rgba(0, 0, 0, 0.05);
     padding: 0.2em 0.4em;
     border-radius: 4px;
-    font-size: 0.9em;
-    font-family: monospace;
+    font-size: 0.85em;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    color: var(--primary);
+}
+
+.post-content pre {
+    background: #1a1a1a;
+    color: #e5e5e5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    /* Wrap long lines */
+    word-wrap: break-word;
+    /* Break long words if needed */
+    overflow-wrap: anywhere;
+    /* Ensure everything wraps */
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-content pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
     .post-content code {
         background: rgba(255, 255, 255, 0.1);
+        color: #60a5fa;
+    }
+
+    .post-content pre {
+        background: #111;
+        border-color: #333;
     }
 }
