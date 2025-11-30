@@ -1,6 +1,6 @@
 # Wintery
 
-이 소스는 **Google의 AntiGravity**로 관리됩니다.  
+이 소스는 **Google의 Antigravity**로 관리됩니다.  
 자세히 알고 싶다면 관련 문서를 참고하세요.
 
 ---
