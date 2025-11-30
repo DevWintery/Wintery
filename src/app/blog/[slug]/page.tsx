@@ -1,4 +1,5 @@
 import { getPostData, getSortedPostsData } from "@/lib/posts";
+import PostContent from "@/components/PostContent";
 import "./page.css";
 
 export async function generateStaticParams() {
@@ -29,10 +30,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                         <time>{postData.date}</time>
                     </div>
                 </header>
-                <div
-                    className="post-content"
-                    dangerouslySetInnerHTML={{ __html: postData.contentHtml || "" }}
-                />
+                <PostContent contentHtml={postData.contentHtml || ""} />
             </article>
         </main>
     );
