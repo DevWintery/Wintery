@@ -3,7 +3,7 @@ import { getSortedPostsData } from '@/lib/posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const posts = getSortedPostsData()
-    const baseUrl = 'https://wintery-blog.vercel.app' // Replace with your actual domain
+    const baseUrl = 'https://wintery-dev.vercel.app' // Replace with your actual domain
 
     const blogPosts = posts.map((post) => ({
         url: `${baseUrl}/blog/${post.id}`,
