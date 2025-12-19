@@ -12,10 +12,17 @@ interface PostListProps {
 export default function PostList({ posts }: PostListProps) {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-    const categories = Array.from(new Set(posts.map((post) => post.category)));
+    const categories = Array.from(new Set(posts.flatMap((post) => {
+        if (post.categories) return post.categories;
+        if (post.category) return [post.category];
+        return [];
+    })));
 
     const filteredPosts = selectedCategory
-        ? posts.filter((post) => post.category === selectedCategory)
+        ? posts.filter((post) => {
+            if (post.categories) return post.categories.includes(selectedCategory);
+            return post.category === selectedCategory;
+        })
         : posts;
 
     const toggleCategory = (category: string) => {
@@ -45,17 +52,26 @@ export default function PostList({ posts }: PostListProps) {
             </div>
 
             <ul>
-                {filteredPosts.map(({ id, date, title, category }) => (
-                    <li key={id} className="post-item">
-                        <Link href={`/blog/${id}`} className="post-link">
-                            <div className="post-meta">
-                                <span className="post-date">{date}</span>
-                                <span className="category-tag">{category}</span>
-                            </div>
-                            <h3 className="post-title">{title}</h3>
-                        </Link>
-                    </li>
-                ))}
+                {filteredPosts.map(({ id, date, title, category, categories }) => {
+                    const displayCategories = categories || (category ? [category] : []);
+                    return (
+                        <li key={id} className="post-item">
+                            <Link href={`/blog/${id}`} className="post-link">
+                                <div className="post-meta">
+                                    <span className="post-date">{date}</span>
+                                    {displayCategories.length > 0 ? (
+                                        displayCategories.map((cat: string) => (
+                                            <span key={cat} className="category-tag">{cat}</span>
+                                        ))
+                                    ) : (
+                                        <span className="category-tag">General</span>
+                                    )}
+                                </div>
+                                <h3 className="post-title">{title}</h3>
+                            </Link>
+                        </li>
+                    );
+                })}
             </ul>
         </section>
     );

@@ -13,6 +13,7 @@ export interface PostData {
     date: string;
     title: string;
     category: string;
+    categories?: string[];
     contentHtml?: string;
     [key: string]: any;
 }
